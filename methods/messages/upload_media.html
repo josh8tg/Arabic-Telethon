@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>UploadMediaRequest</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link id="style" href="../../css/docs.dark.css" rel="stylesheet">
+    <script>
+    document.getElementById("style").href = "../../css/docs."
+        + (localStorage.getItem("theme") || "light")
+        + ".css";
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Nunito|Source+Code+Pro"
+          rel="stylesheet">
+</head>
+<body>
+<div id="main_div"><ul class="horizontal"><li><a href="../../index.html">Docs</a></li><img src="../../img/arrow.svg" alt="/" /><li><a href="../index.html">Methods</a></li><img src="../../img/arrow.svg" alt="/" /><li><a href="index.html">Messages</a></li><img src="../../img/arrow.svg" alt="/" /><li><a href="upload_media.html">UploadMediaRequest</a></li></ul><h1>UploadMediaRequest</h1><p><strong>Both users and bots</strong> can use this method. <a href="#examples">See code examples.</a></p><pre>---functions---
+messages.uploadMedia#519bc2b1 peer:<a href="../../types/input_peer.html">InputPeer</a> media:<a href="../../types/input_media.html">InputMedia</a> = <a href="../../types/message_media.html">MessageMedia</a></pre><button onclick="cp('from telethon.tl.functions.messages import UploadMediaRequest');">Copy import to the clipboard</button><h3>Returns</h3><table><tr><td><a href="../../types/message_media.html">MessageMedia</a></td></tr></table><p>This type can be an instance of either:</p><table><tr><td><a href="../../constructors/message_media_contact.html">MessageMediaContact</a></td><td><a href="../../constructors/message_media_document.html">MessageMediaDocument</a></td></tr><tr><td><a href="../../constructors/message_media_empty.html">MessageMediaEmpty</a></td><td><a href="../../constructors/message_media_game.html">MessageMediaGame</a></td></tr><tr><td><a href="../../constructors/message_media_geo.html">MessageMediaGeo</a></td><td><a href="../../constructors/message_media_geo_live.html">MessageMediaGeoLive</a></td></tr><tr><td><a href="../../constructors/message_media_invoice.html">MessageMediaInvoice</a></td><td><a href="../../constructors/message_media_photo.html">MessageMediaPhoto</a></td></tr><tr><td><a href="../../constructors/message_media_poll.html">MessageMediaPoll</a></td><td><a href="../../constructors/message_media_unsupported.html">MessageMediaUnsupported</a></td></tr><tr><td><a href="../../constructors/message_media_venue.html">MessageMediaVenue</a></td><td><a href="../../constructors/message_media_web_page.html">MessageMediaWebPage</a></td></tr></table><h3>Parameters</h3><table><tr><td><b>peer</b></td><td style="text-align:center"><a href="../../types/input_peer.html">InputPeer</a></td><td>Anything entity-like will work if the library can find its <code>Input</code> version (e.g., usernames, <code>Peer</code>, <code>User</code> or <code>Channel</code> objects, etc.).</td></tr><tr><td><b>media</b></td><td style="text-align:center"><a href="../../types/input_media.html">InputMedia</a></td><td></td></tr></table><h1>Known RPC errors</h1><p>This request can cause 3 known errors:</p><table><tr><td><code>BotMissingError</code></td><td>This method can only be run by a bot.</td></tr><tr><td><code>MediaInvalidError</code></td><td>Media invalid.</td></tr><tr><td><code>PeerIdInvalidError</code></td><td>An invalid Peer was used. Make sure to pass the right peer type.</td></tr></table><p>You can import these from <code>telethon.errors</code>.</p><h1 id="examples">Example</h1><pre><strong>from</strong> telethon.sync <strong>import</strong> TelegramClient
+<strong>from</strong> telethon <strong>import</strong> functions, types
+
+<strong>with</strong> TelegramClient(name, api_id, api_hash) <strong>as</strong> client:
+    result = client(functions.messages.UploadMediaRequest(
+        peer=<em>'username'</em>,
+        media=types.InputMediaUploadedPhoto(
+            file=client.upload_file(<em>'/path/to/file.jpg'</em>),
+            stickers=[types.InputDocument(
+                id=-12398745604826,
+                access_hash=-12398745604826,
+                file_reference=<em>b'arbitrary\x7f data \xfa here'</em>
+            )],
+            ttl_seconds=42
+        )
+    ))
+    print(result.stringify())</pre><textarea id="c" class="invisible"></textarea><script>function cp(t){var c=document.getElementById("c");c.value=t;c.select();try{document.execCommand("copy")}catch(e){}}</script></div><script>prependPath = "../../";</script><script src="../../js/search.js"></script></body></html>
